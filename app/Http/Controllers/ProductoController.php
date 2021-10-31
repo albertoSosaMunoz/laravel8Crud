@@ -73,21 +73,20 @@ class ProductoController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Producto  $producto
-     * @return \Illuminate\Http\Response
+     * @return updated product data
      */
     public function update(Request $request, Producto $producto,$id)
     {
         $producto = Producto::find($id);
 
+        if(isset($request->nombre) && $request->nombre != null)
+            $producto->nombre = $request->nombre;
 
-        if(isset($request->nombre))
-        $producto->nombre = $request->nombre;
+        if(isset($request->precio) &&  $request->precio != null)
+            $producto->precio = $request->precio;
 
-        if(isset($request->precio))
-        $producto->precio = $request->precio;
-
-        if(isset($request->stock))
-        $producto->stock  = $request->stock;
+        if(isset($request->stock) && $request->stock != null)
+            $producto->stock  = $request->stock;
 
         $producto->save();
 
@@ -103,9 +102,9 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {      
-        if( Producto::find( $id ) != null ){
-            $producto=Producto::find($id);
-            Producto::find($id)->delete();
+        if( Producto::find( intval($id) ) != null ){
+            $producto=Producto::find(intval($id));
+            Producto::find(intval($id))->delete();
             return $producto;
         }        
         else
