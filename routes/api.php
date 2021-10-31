@@ -18,8 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });*/
 
-//nos devuelve todos los objetos
-Route::get("/producto","App\Http\Controllers\ProductoController@index");
+//nos devuelve todos los objetosg
+Route::get("/productos","App\Http\Controllers\ProductoController@index");
 
 //devuelve el objeto por su id
 Route::get("/producto/{id}","App\Http\Controllers\ProductoController@singleProduct");
@@ -32,4 +32,5 @@ Route::post("/producto","App\Http\Controllers\ProductoController@createSinglePro
 
 //actualiza un producto segun su id
 Route::put("/producto/{id}","App\Http\Controllers\ProductoController@update");
+
 
