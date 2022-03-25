@@ -16,6 +16,7 @@ class ProductoController extends Controller
     {   
         $productos = Producto::all();
         return $productos;
+        
     }
     /**
      * Display a single resource.
